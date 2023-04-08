@@ -1,0 +1,126 @@
+{
+    "info": {
+        "_postman_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "name": "YouVersion API Request",
+        "description": "An example request to the YouVersion API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "YouVersion API Request",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "authority",
+                        "value": "plans.youversionapi.com",
+                        "type": "text"
+                    },
+                    {
+                        "key": "accept",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "accept-language",
+                        "value": "en",
+                        "type": "text"
+                    },
+                    {
+                        "key": "content-type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "origin",
+                        "value": "https://my.bible.com",
+                        "type": "text"
+                    },
+                    {
+                        "key": "referer",
+                        "value": "https://my.bible.com/",
+                        "type": "text"
+                    },
+                    {
+                        "key": "sec-ch-ua",
+                        "value": "\"Microsoft Edge\";v=\"111\", \"Not(A:Brand\";v=\"8\", \"Chromium\";v=\"111\"",
+                        "type": "text"
+                    },
+                    {
+                        "key": "sec-ch-ua-mobile",
+                        "value": "?0",
+                        "type": "text"
+                    },
+                    {
+                        "key": "sec-ch-ua-platform",
+                        "value": "\"macOS\"",
+                        "type": "text"
+                    },
+                    {
+                        "key": "sec-fetch-dest",
+                        "value": "empty",
+                        "type": "text"
+                    },
+                    {
+                        "key": "sec-fetch-mode",
+                        "value": "cors",
+                        "type": "text"
+                    },
+                    {
+                        "key": "sec-fetch-site",
+                        "value": "cross-site",
+                        "type": "text"
+                    },
+                    {
+                        "key": "user-agent",
+                        "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36 Edg/111.0.1661.54",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-youversion-app-platform",
+                        "value": "web",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-youversion-app-version",
+                        "value": "4",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-youversion-client",
+                        "value": "youversion",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": ""
+                },
+                "url": {
+                    "raw": "https://plans.youversionapi.com/4.0/plans/2202/days/1?together=true",
+                    "protocol": "https",
+                    "host": [
+                        "plans",
+                        "youversionapi",
+                        "com"
+                    ],
+                    "path": [
+                        "4.0",
+                        "plans",
+                        "2202",
+                        "days",
+                        "1"
+                    ],
+                    "query": [
+                        {
+                            "key": "together",
+                            "value": "true"
+                        }
+                    ]
+                },
+                "description": "An example request to the YouVersion API"
+            },
+            "response": []
+        }
+    ]
+}

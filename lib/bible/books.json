@@ -1,0 +1,266 @@
+[
+  {
+    "name": "1 Mosebok",
+    "usfm": "GEN"
+  },
+  {
+    "name": "2 Mosebok",
+    "usfm": "EXO"
+  },
+  {
+    "name": "3 Mosebok",
+    "usfm": "LEV"
+  },
+  {
+    "name": "4 Mosebok",
+    "usfm": "NUM"
+  },
+  {
+    "name": "5 Mosebok",
+    "usfm": "DEU"
+  },
+  {
+    "name": "Josva",
+    "usfm": "JOS"
+  },
+  {
+    "name": "Dommerne",
+    "usfm": "JDG"
+  },
+  {
+    "name": "Rut",
+    "usfm": "RUT"
+  },
+  {
+    "name": "1 Samuel",
+    "usfm": "1SA"
+  },
+  {
+    "name": "2 Samuel",
+    "usfm": "2SA"
+  },
+  {
+    "name": "1 Kongebok",
+    "usfm": "1KI"
+  },
+  {
+    "name": "2 Kongebok",
+    "usfm": "2KI"
+  },
+  {
+    "name": "1 Krønikebok",
+    "usfm": "1CH"
+  },
+  {
+    "name": "2 Krønikebok",
+    "usfm": "2CH"
+  },
+  {
+    "name": "Esra",
+    "usfm": "EZR"
+  },
+  {
+    "name": "Nehemja",
+    "usfm": "NEH"
+  },
+  {
+    "name": "Ester",
+    "usfm": "EST"
+  },
+  {
+    "name": "Job",
+    "usfm": "JOB"
+  },
+  {
+    "name": "Salmene",
+    "usfm": "PSA"
+  },
+  {
+    "name": "Salomos Ordspråk",
+    "usfm": "PRO"
+  },
+  {
+    "name": "Forkynneren",
+    "usfm": "ECC"
+  },
+  {
+    "name": "Høysangen",
+    "usfm": "SNG"
+  },
+  {
+    "name": "Jesaja",
+    "usfm": "ISA"
+  },
+  {
+    "name": "Jeremia",
+    "usfm": "JER"
+  },
+  {
+    "name": "Klagesangene",
+    "usfm": "LAM"
+  },
+  {
+    "name": "Esekiel",
+    "usfm": "EZK"
+  },
+  {
+    "name": "Daniel",
+    "usfm": "DAN"
+  },
+  {
+    "name": "Hosea",
+    "usfm": "HOS"
+  },
+  {
+    "name": "Joel",
+    "usfm": "JOL"
+  },
+  {
+    "name": "Amos",
+    "usfm": "AMO"
+  },
+  {
+    "name": "Obadja",
+    "usfm": "OBA"
+  },
+  {
+    "name": "Jona",
+    "usfm": "JON"
+  },
+  {
+    "name": "Mika",
+    "usfm": "MIC"
+  },
+  {
+    "name": "Nahum",
+    "usfm": "NAM"
+  },
+  {
+    "name": "Habakkuk",
+    "usfm": "HAB"
+  },
+  {
+    "name": "Sefanja",
+    "usfm": "ZEP"
+  },
+  {
+    "name": "Haggai",
+    "usfm": "HAG"
+  },
+  {
+    "name": "Sakarja",
+    "usfm": "ZEC"
+  },
+  {
+    "name": "Malaki",
+    "usfm": "MAL"
+  },
+  {
+    "name": "Matteus",
+    "usfm": "MAT"
+  },
+  {
+    "name": "Markus",
+    "usfm": "MRK"
+  },
+  {
+    "name": "Lukas",
+    "usfm": "LUK"
+  },
+  {
+    "name": "Johannes",
+    "usfm": "JHN"
+  },
+  {
+    "name": "Apostlenes gjerninger",
+    "usfm": "ACT"
+  },
+  {
+    "name": "Romerne",
+    "usfm": "ROM"
+  },
+  {
+    "name": "1 Korinter",
+    "usfm": "1CO"
+  },
+  {
+    "name": "2 Korinter",
+    "usfm": "2CO"
+  },
+  {
+    "name": "Galaterne",
+    "usfm": "GAL"
+  },
+  {
+    "name": "Efeserne",
+    "usfm": "EPH"
+  },
+  {
+    "name": "Filipperne",
+    "usfm": "PHP"
+  },
+  {
+    "name": "Kolosserne",
+    "usfm": "COL"
+  },
+  {
+    "name": "1 Tessaloniker",
+    "usfm": "1TH"
+  },
+  {
+    "name": "2 Tessaloniker",
+    "usfm": "2TH"
+  },
+  {
+    "name": "1 Timoteus",
+    "usfm": "1TI"
+  },
+  {
+    "name": "2 Timoteus",
+    "usfm": "2TI"
+  },
+  {
+    "name": "Titus",
+    "usfm": "TIT"
+  },
+  {
+    "name": "Filemon",
+    "usfm": "PHM"
+  },
+  {
+    "name": "Hebreerne",
+    "usfm": "HEB"
+  },
+  {
+    "name": "Jakob",
+    "usfm": "JAS"
+  },
+  {
+    "name": "1 Peter",
+    "usfm": "1PE"
+  },
+  {
+    "name": "2 Peter",
+    "usfm": "2PE"
+  },
+  {
+    "name": "1 Johannes",
+    "usfm": "1JN"
+  },
+  {
+    "name": "2 Johannes",
+    "usfm": "2JN"
+  },
+  {
+    "name": "3 Johannes",
+    "usfm": "3JN"
+  },
+  {
+    "name": "Judas",
+    "usfm": "JUD"
+  },
+  {
+    "name": "Åpenbaringen",
+    "usfm": "REV"
+  }
+]
