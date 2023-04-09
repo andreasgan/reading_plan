@@ -109,7 +109,7 @@ class PlanDayScreen extends HookWidget {
     }, []);
 
     return Scaffold(
-      appBar: AppBar(title: Text('Leseplan')),
+      appBar: AppBar(title: const Text('Leseplan')),
       body: Center(
         child: Builder(builder: (context) {
           if (daySnapshot.connectionState == ConnectionState.waiting) {
