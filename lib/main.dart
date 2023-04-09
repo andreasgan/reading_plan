@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
@@ -7,11 +8,15 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:json_theme/json_theme.dart';
 import 'package:reading_plan/bible/api.dart';
 import 'package:reading_plan/bible/models/plan.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wakelock/wakelock.dart';
+
+late SharedPreferences sharedPrefs;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final themeStr = await rootBundle.loadString('assets/appainter_theme.json');
+  sharedPrefs = await SharedPreferences.getInstance();
   final themeJson = jsonDecode(themeStr);
   final theme = ThemeDecoder.decodeThemeData(themeJson)!;
   runApp(AppRoot(theme: theme));
@@ -40,7 +45,7 @@ class PlanDaySelectionScreen extends HookWidget {
   Widget build(BuildContext context) {
     Wakelock.enable();
 
-    final day = useState(1);
+    final day = useState(sharedPrefs.getInt('last_selected_day') ?? 1);
     return Scaffold(
       body: Center(
         child: Column(
@@ -48,22 +53,30 @@ class PlanDaySelectionScreen extends HookWidget {
           children: [
             Expanded(child: PlanDayScreen(plan: '2202', day: day.value)),
             SizedBox(
-              height: 300,
+              height: 400,
               child: NotificationListener<ScrollNotification>(
                 onNotification: (scrollNotification) {
                   if (scrollNotification is ScrollEndNotification) {
                     final metrics =
                         (scrollNotification.metrics as FixedExtentMetrics);
-                    day.value = metrics.itemIndex + 1;
+                    sharedPrefs.setInt(
+                      'last_selected_day',
+                      metrics.itemIndex + 1,
+                    );
                     return true;
                   } else {
                     return false;
                   }
                 },
                 child: CupertinoPicker.builder(
-                  itemExtent: 30,
+                  scrollController: FixedExtentScrollController(
+                    initialItem: day.value - 1,
+                  ),
+                  itemExtent: 35,
                   childCount: 182,
-                  onSelectedItemChanged: (index) {},
+                  onSelectedItemChanged: (index) {
+                    day.value = index + 1;
+                  },
                   itemBuilder: (context, index) => Center(
                     child: Text('${index + 1}'),
                   ),
@@ -85,10 +98,15 @@ class PlanDayScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    Wakelock.enable();
-
     final dayFuture = useMemoized(() => api.fetchPlan(plan, day), [plan, day]);
     final daySnapshot = useFuture(dayFuture);
+    useEffect(() {
+      final timer = Timer.periodic(const Duration(seconds: 10), (timer) {
+        debugPrint('renewing wakelock');
+        Wakelock.enable();
+      });
+      return timer.cancel;
+    }, []);
 
     return Scaffold(
       appBar: AppBar(title: Text('Leseplan')),
