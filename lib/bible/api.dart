@@ -16,7 +16,6 @@ class Api {
       'https://plans.youversionapi.com/4.0/plans/$plan/days/$day?together=true',
       options: Options(
         headers: {
-          'authority': 'plans.youversionapi.com',
           'accept': 'application/json',
           'accept-language': 'no',
           'content-type': 'application/json',
@@ -28,8 +27,9 @@ class Api {
         },
       ),
     );
+    final statusCode = response.statusCode;
 
-    if (response.statusCode == 200 || response.statusCode == 304) {
+    if (statusCode != null && statusCode >= 200 && statusCode < 400) {
       final Plan plan = Plan.fromJson(response.data);
       return plan;
     } else if (response.statusCode == 404) {

@@ -116,7 +116,7 @@ class PlanDayScreen extends HookWidget {
             return const CircularProgressIndicator.adaptive();
           }
           if (daySnapshot.data == null) {
-            return const Text('Error');
+            return Text('Error: ${daySnapshot.error}');
           }
           final verseSelections = daySnapshot.data!.segments
               .whereType<ReferencePlanSegment>()
