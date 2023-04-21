@@ -46,12 +46,28 @@ class PlanDaySelectionScreen extends HookWidget {
     Wakelock.enable();
 
     final day = useState(sharedPrefs.getInt('last_selected_day') ?? 1);
+    const plan = '2202';
+
+    final doneDays = useState<List<String>>(
+      sharedPrefs.getStringList('${plan}_days') ?? [],
+    );
+    useMemoized(
+      () => sharedPrefs.setStringList('${plan}_days', doneDays.value),
+      [doneDays.value],
+    );
+    useMemoized(() => null);
     return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Expanded(child: PlanDayScreen(plan: '2202', day: day.value)),
+            Expanded(
+              child: PlanDayScreen(
+                plan: plan,
+                day: day.value,
+                doneDays: doneDays,
+              ),
+            ),
             SizedBox(
               height: 400,
               child: NotificationListener<ScrollNotification>(
@@ -77,9 +93,40 @@ class PlanDaySelectionScreen extends HookWidget {
                   onSelectedItemChanged: (index) {
                     day.value = index + 1;
                   },
-                  itemBuilder: (context, index) => Center(
-                    child: Text('${index + 1}'),
-                  ),
+                  itemBuilder: (context, index) {
+                    final listDay = index + 1;
+                    final done = doneDays.value.contains(listDay.toString());
+                    return Center(
+                      child: SizedBox(
+                        width: 50,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            AnimatedContainer(
+                              duration: const Duration(milliseconds: 800),
+                              curve: Curves.easeOutCirc,
+                              width: 10,
+                              height: 10,
+                              decoration: BoxDecoration(
+                                color: done == true
+                                    ? Theme.of(context).colorScheme.primary
+                                    : null,
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  width: 1.5,
+                                  strokeAlign: BorderSide.strokeAlignCenter,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                            Text('$listDay'),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
             )
@@ -91,13 +138,20 @@ class PlanDaySelectionScreen extends HookWidget {
 }
 
 class PlanDayScreen extends HookWidget {
-  const PlanDayScreen({super.key, required this.plan, required this.day});
+  const PlanDayScreen({
+    super.key,
+    required this.plan,
+    required this.day,
+    required this.doneDays,
+  });
 
   final String plan;
   final int day;
+  final ValueNotifier<List<String>> doneDays;
 
   @override
   Widget build(BuildContext context) {
+    useListenable(doneDays);
     final dayFuture = useMemoized(() => api.fetchPlan(plan, day), [plan, day]);
     final daySnapshot = useFuture(dayFuture);
     useEffect(() {
@@ -131,17 +185,30 @@ class PlanDayScreen extends HookWidget {
               const SizedBox(height: 8),
               ...verseSelections
                   .map(
-                    (vs) => Container(
-                      child: Text(
-                        vs.toLocalizedString('NB'),
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleMedium!
-                            .copyWith(height: 1.4),
-                      ),
+                    (vs) => Text(
+                      vs.toLocalizedString('NB'),
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleMedium!
+                          .copyWith(height: 1.4),
                     ),
                   )
-                  .toList()
+                  .toList(),
+              Padding(
+                padding: const EdgeInsets.only(top: 24),
+                child: Switch(
+                  value: doneDays.value.contains(day.toString()),
+                  onChanged: (v) {
+                    if (v) {
+                      doneDays.value = List.from(doneDays.value)
+                        ..add(day.toString());
+                    } else {
+                      doneDays.value = List.from(doneDays.value)
+                        ..remove(day.toString());
+                    }
+                  },
+                ),
+              ),
             ],
           );
         }),
